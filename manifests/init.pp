@@ -17,4 +17,8 @@ class openvpn_as ($openvpn_location, $password) {
       password => $password,
       require => Class["openvpn_downloader"]
     }
+
+    ufw::allow { 'allow943':
+      port => 943,
+    }
 }
