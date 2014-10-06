@@ -6,7 +6,7 @@ class openvpn_as ($openvpn_location, $password) {
     notify => Exec["install_openvpn"],
   }
 
-  exec { "DEBIAN_FRONTEND=noninteractive /usr/bin/env dpkg -i /tmp/openvpn_as.deb":
+  exec { "export DEBIAN_FRONTEND=noninteractive && /usr/bin/env dpkg -i /tmp/openvpn_as.deb":
     alias => "install_openvpn"
   }
 
