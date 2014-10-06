@@ -20,4 +20,13 @@ class openvpn_as ($openvpn_location, $password) {
     port => 943,
     require => Exec["install_openvpn"],
   }
+  ufw::allow { 'allow443':
+    port => 443,
+    require => Exec["install_openvpn"],
+  }
+  ufw::allow { 'allow1194':
+    port => 1194,
+    proto => "udp",
+    require => Exec["install_openvpn"],
+  }
 }
