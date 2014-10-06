@@ -1,6 +1,6 @@
 class openvpn_as ($openvpn_location, $password) {
     class openvpn_downloader {
-      exec { "/usr/bin/env wget -O openvpn_as.deb --timestamping $openvpn_location":
+      exec { "/usr/bin/env wget -O openvpn_as.deb --timestamping ${openvpn_location}":
         alias => "exec_openvpn_download",
         cwd => "/tmp",
       }

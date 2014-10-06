@@ -1,0 +1,20 @@
+{
+  "name": "Enucatl-openvpn_as",
+  "version": "0.0.1",
+  "author": "Matteo Abis",
+  "license": "See LICENSE file",
+  "summary": "install openvpn as",
+  "source": "https://github.com/enucatl/openvpn_as",
+  "project_page": "(https://github.com/enucatl/openvpn_as)",
+  "issues_url": "https://github.com/Enucatl/openvpn_as/issues",
+  "tags": ["security"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"Ubuntu",
+    "operatingsystemrelease":[ "14.04"]
+    }
+   ],
+  "dependencies": [
+    { "name": "attachmentgenie/ufw", "version_requirement": ">= 1.4.9" }
+  ]
+}
