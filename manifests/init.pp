@@ -1,24 +1,23 @@
 class openvpn_as ($openvpn_location, $password) {
-    class openvpn_downloader {
-      exec { "/usr/bin/env wget -O openvpn_as.deb --timestamping ${openvpn_location}":
-        alias => "exec_openvpn_download",
-        cwd => "/tmp",
-      }
+  wget::fetch { $openvpn_location:
+    alias => "openvpn_download",
+    destination => '/tmp/openvpn_as.deb',
+    cache_dir   => '/var/cache/wget',
+    notify => Exec["install_openvpn"],
+  }
 
-      exec { "/usr/bin/env dpkg -i -fnoninteractive /tmp/openvpn_as.deb":
-        require => Exec["exec_openvpn_download"],
-      }
-    }
+  exec { "/usr/bin/env dpkg -i -fnoninteractive /tmp/openvpn_as.deb":
+    alias => "install_openvpn"
+  }
 
-    class { 'openvpn_downloader': }
+  user { 'openvpn':
+    ensure => "present",
+    password => $password,
+    require => Exec["install_openvpn"],
+  }
 
-    user { 'openvpn':
-      ensure => "present",
-      password => $password,
-      require => Class["openvpn_downloader"]
-    }
-
-    ufw::allow { 'allow943':
-      port => 943,
-    }
+  ufw::allow { 'allow943':
+    port => 943,
+    require => Exec["install_openvpn"],
+  }
 }

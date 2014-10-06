@@ -15,6 +15,7 @@
     }
    ],
   "dependencies": [
-    { "name": "attachmentgenie/ufw", "version_requirement": ">= 1.4.9" }
+    { "name": "attachmentgenie/ufw", "version_requirement": ">= 1.4.9" },
+    { "name": "maestrodev/wget", "version_requirement": ">=1.5.6" }
   ]
 }
