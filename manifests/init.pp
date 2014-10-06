@@ -6,7 +6,7 @@ class openvpn_as ($openvpn_location, $password) {
     notify => Exec["install_openvpn"],
   }
 
-  exec { "dpkg -i /tmp/openvpn_as.deb":
+  exec { "/usr/bin/env dpkg -i /tmp/openvpn_as.deb":
     alias => "install_openvpn"
   }
 
