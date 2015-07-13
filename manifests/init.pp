@@ -1,4 +1,6 @@
 class openvpn_as ($openvpn_location, $password) {
+  include wget
+
   wget::fetch { $openvpn_location:
     alias => "openvpn_download",
     destination => '/tmp/openvpn_as.deb',
